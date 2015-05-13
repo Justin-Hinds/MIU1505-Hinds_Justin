@@ -26,7 +26,7 @@ var title =Ti.UI.createLabel({
 	width: "100%",
 	textAlign: "center"
 });
-// Scroll View
+// Table View
 var table = Ti.UI.createTableView({
 	top: border.top + border.height
 });
@@ -38,7 +38,7 @@ var questionSection = Ti.UI.createTableViewSection({
 // Answer Window & Function
 var getAnswer = function (){
 	answerWindow = Ti.UI.createWindow({
-	backgroundColor:"#fffe8f"
+	backgroundColor:"#2064df"
 	});
 	
 var answerTitleView = Ti.UI.createView({
@@ -61,15 +61,22 @@ var answerTitle =Ti.UI.createLabel({
 var answerLabel = Ti.UI.createLabel({
 	text: this.answer,
 	font: {foneSize: 16, fontStyle:"Baskerville-SemiBold "},
-	top: answerBorder.top + answerBorder.height + 50,
+	top: 0,
 	left :10,
 	right: 10
 });
+var answerView = Ti.UI.createView({
+	height: Ti.UI.SIZE,
+	backgroundColor: "fff",
+	top: answerBorder.top + answerBorder.height + 5,
+	borderRadius: 12
+});
+answerView.add(answerLabel);
 answerTitleView.add(answerTitle);
-answerWindow.add(answerTitleView, border, answerTitle, answerLabel);
+answerWindow.add(answerTitleView, border, answerTitle, answerView);
 navWin.openWindow(answerWindow);
 };
-
+ table.setBackgroundColor("#f0f2f4");
 var loadFile = require("JSON");
 titleView.add(title);
 table.setData([questionSection]);
