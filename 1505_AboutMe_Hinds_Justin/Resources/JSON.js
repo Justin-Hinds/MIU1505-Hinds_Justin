@@ -14,6 +14,7 @@ var aboutMe =[
 {question:"What is your favorite video game?" ,answer:"As of right now it is between Destiny and Mortal Kombat X."},
 {question: "What is your favorite anime?", answer: "That would have to be Code Geass. It was just done so well in my opinion. The story telling, the pacing, the length all crafted masterfully. An honorable mention goes to Shura No Toki."}
 ];
+//Loop for table view rows
 for(var i = 0, j = aboutMe.length; i < j; i++){
 	var row = Ti.UI.createTableViewRow({
 		title: aboutMe[i].question,
