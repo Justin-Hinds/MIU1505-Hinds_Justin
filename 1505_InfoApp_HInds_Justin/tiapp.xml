@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <id>com.arcane.aboutme</id>
-    <name>1505_AboutMe_Hinds_Justin</name>
+    <id>com.arcane.InfoApp</id>
+    <name>1505_InfoApp_HInds_Justin</name>
     <version>1.0</version>
     <publisher>ChefZatoichi</publisher>
     <url>http://</url>
-    <description>undefined</description>
+    <description/>
     <copyright>2015 by ChefZatoichi</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <guid>827f6d13-34a5-41c8-a8bb-9cdc660cf892</guid>
+    <guid>fc4fd013-27cf-485d-87f3-76a97572c2cc</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <ios>
         <plist>
@@ -53,7 +53,7 @@
         <target device="blackberry">false</target>
         <target device="ipad">true</target>
         <target device="iphone">true</target>
-        <target device="mobileweb">false</target>
+        <target device="mobileweb">true</target>
     </deployment-targets>
     <sdk-version>3.5.1.GA</sdk-version>
 </ti:app>
