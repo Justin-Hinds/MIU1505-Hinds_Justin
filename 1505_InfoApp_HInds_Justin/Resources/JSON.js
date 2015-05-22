@@ -32,7 +32,6 @@ for(var i=0; i<info.length; i++){
 		font: { fontSize: 14, fontFamily: "Futura-Medium"},
 		textColor: "#fff"
 	});
-	console.log(info[i].title);
 //Image View
 	var imageHolder = Ti.UI.createImageView({
 		image: "images/" + info[i].image,
