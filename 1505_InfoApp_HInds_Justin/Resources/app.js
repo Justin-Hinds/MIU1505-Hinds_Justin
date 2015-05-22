@@ -1,64 +1,39 @@
-// this sets the background color of the master UIView (when there are no windows/tab groups on it)
-Titanium.UI.setBackgroundColor('#000');
-
-// create tab group
-var tabGroup = Titanium.UI.createTabGroup();
-
-
-//
-// create base UI tab and root window
-//
-var win1 = Titanium.UI.createWindow({  
-    title:'Tab 1',
-    backgroundColor:'#fff'
+Ti.UI.setBackgroundColor("#000");
+// Screen width and height 
+var pW = Ti.Platform.displayCaps.platformWidth;
+var pH = Ti.Platform.displayCaps.platformHeight;
+// Main and Nav window
+var mainWin = Ti.UI.createWindow({
+	backgroundColor:("#fff"),
+	title: "Games",
+	orientationModes: [Ti.UI.PORTRAIT,Ti.UI.LANDSCAPE_LEFT,Ti.UI.LANDSCAPE_RIGHT]
 });
-var tab1 = Titanium.UI.createTab({  
-    icon:'KS_nav_views.png',
-    title:'Tab 1',
-    window:win1
+var navWin = Ti.UI.iOS.createNavigationWindow({
+	window: mainWin,
+	});
+//File System
+var imagesFolder = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory,"Images");
+var imageFiles = imagesFolder.getDirectoryListing();
+// Margins and Sizing
+var margin = 16;
+var trueCanvas = pW - (margin * 2);
+var size = trueCanvas ;
+// Scroll View
+var border = Ti.UI.createView({
+	backgroundColor:"8650d8",
+	height:1,
+	top:0  
 });
-
-var label1 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 1',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
+var viewContainer = Ti.UI.createScrollView({
+	top:0,
+	width: pW,
+	backgroundColor: "#c2c2c2",
+	layout:"horizontal",
+	contentWidth: pW,
+	showVerticalScrollIndicator: true,
+	height: pH - border.height - border.top
 });
+mainWin.add(viewContainer);
 
-win1.add(label1);
-
-//
-// create controls tab and root window
-//
-var win2 = Titanium.UI.createWindow({  
-    title:'Tab 2',
-    backgroundColor:'#fff'
-});
-var tab2 = Titanium.UI.createTab({  
-    icon:'KS_nav_ui.png',
-    title:'Tab 2',
-    window:win2
-});
-
-var label2 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 2',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
-});
-
-win2.add(label2);
-
-
-
-//
-//  add tabs
-//
-tabGroup.addTab(tab1);  
-tabGroup.addTab(tab2);  
-
-
-// open tab group
-tabGroup.open();
+var loadFile = require("JSON");
+navWin.open();
