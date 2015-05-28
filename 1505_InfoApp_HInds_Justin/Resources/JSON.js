@@ -10,10 +10,6 @@ review: ": IGN – 8.4/10, Metacrititc – 84/100, Gamespot -  8/10", rated: "Ma
 {image:"The_Last_of_Us.jpg", title: "The Last of Us", publisher: "Sony Computer Entertainment", release: " June 14, 2014", developer: "Naughty Dog", platforms: "PS3, PS4", 
 review: ": IGN – 10/10, Gamespot – 9.6/10, Metacritic – 95/100", rated: "Mature", description: "The last of us is a gritty post apocalyptic action adventure Playstation exclusive based around Joel who whom has been tasked with escorting Ellie across the country. It is presented in an episodic manner based off of the seasons. It has excellent story telling, visuals, and score; It is generally regarded as a masterpiece."}
 ];
-
-
-
-
 //scroll view loop
 for(var i=0; i<info.length; i++){
 	var view = Ti.UI.createView({
