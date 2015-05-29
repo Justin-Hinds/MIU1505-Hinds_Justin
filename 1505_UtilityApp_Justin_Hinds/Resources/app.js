@@ -1,7 +1,7 @@
 Ti.UI.setBackgroundColor("#000");
 
 var mainWin = Ti.UI.createWindow({
-	backgroundColor: "blue",
+	backgroundColor: "e7f5fd",
 });
 var navWin = Ti.UI.iOS.createNavigationWindow({
 	window: mainWin,

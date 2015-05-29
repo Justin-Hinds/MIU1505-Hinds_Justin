@@ -51,24 +51,39 @@ var finishers = [
 // login input fields
 var user = Ti.UI.createTextField({
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+		borderColor: "001998",
 		color: '#336699',
-	  	top: 30, 
-	  	left: 10,
+	  	top: 200, 
 	  	width: 200,
 	  	height: 30,
 	  	hintText: "username",
 	  	clearOnEdit: "true"
 });
+var userLabel= Ti.UI.createLabel({
+	text: "Username = justin",
+	top: user.top + user.height ,
+	font: {fontFamily: "Thonburi-Bold", fontSize: 14}
+});
 var pass = Ti.UI.createTextField({
-		top: user.top + user.height + 10,
-		left: 10,
+		top: user.top + user.height + 25,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+		borderColor: "001998",
 	  	color: '#336699',
 	  	width: 200,
 	  	passwordMask: "true",
 	  	height: 30,
 	  	hintText: "Password",
 	  	clearOnEdit: "true"
+});
+var passLabel = Ti.UI.createLabel({
+	text: "Password = hinds",
+	top: pass.top + pass.height,
+	font: {fontFamily: "Thonburi-Bold", fontSize: 14}
+});
+var titleLabel = Ti.UI.createLabel({
+	text: "FINISHERS",
+	top: 25,
+	font: {fontFamily: "Thonburi-Bold", fontSize: 28}
 });
 //button for login
 var login = Ti.UI.createView({
@@ -97,12 +112,13 @@ login.addEventListener("click", function(e){
 		});
 		dialog.show();
 	dialog.addEventListener("click",function(e){
+		// login confirmation
 		if (e.index === e.source.ok){		
-			navWin.openWindow(finWin);
-			
+			navWin.openWindow(finWin);	
 		}
 });
 	}else{
+		//error alert
 		alert("Invalid Username or Password");
 	}
 });
@@ -111,6 +127,7 @@ var finView = Ti.UI.createScrollView({
 	top: 40,
 	layout:"vertical",
 	showVerticalScrollIndicator: "true",
+	backgroundColor: "d3d3d3"
 });
 finView.addEventListener("click", function(e){
 	getFinish(e.source);
@@ -119,12 +136,10 @@ finView.addEventListener("click", function(e){
 for(var i=0; i<finishers.length; i++){
 	var view = Ti.UI.createView({
 		top: 10,
-		left: 10,
 		height: 80,
-		width: "90%",
-		backgroundColor:"a2f",
-		borderRadius: 15,
-		borderWidth:2,
+		width: "100%",
+		backgroundColor:"e7f5fd",
+		borderWidth: 1,
 		borderColor: "#fff",
 		fat1: finishers[i].fat1,
 		fat2: finishers[i].fat2,
@@ -133,7 +148,9 @@ for(var i=0; i<finishers.length; i++){
 		brute3: finishers[i].brute3,
 	});
 	var charName = Ti.UI.createLabel({
-		text: finishers[i].title
+		text: finishers[i].title,
+		color: "000",
+		font: {fontFamily: "HoeflerText-Black", fontSize: 24}
 	});
 	view.add(charName);
 	finView.add(view);
@@ -148,7 +165,38 @@ var getFinish = function(dataSource){
 		// view for move list
 		var moves = Ti.UI.createView({
 			layout:"vertical",
-			backgroundColor: "white"
+			backgroundColor: "white",
+			
+		});
+		var label1 = Ti.UI.createLabel({
+			text: "Fatality 1",
+			font:{fontFamily:"Futura-CondensedExtraBold  ", fontSize: 24},
+			top: 10,
+			width:"90%"
+		});
+		var label2 = Ti.UI.createLabel({
+			text: "Fatality 2",
+			font:{fontFamily:"Futura-CondensedExtraBold  ", fontSize: 24},
+			top: 10,
+			width:"90%"
+		});
+		var label3 = Ti.UI.createLabel({
+			text: "Brutality 1",
+			font:{fontFamily:"Futura-CondensedExtraBold ", fontSize: 24},
+			top: 10,
+			width:"90%"
+		});
+		var label4 = Ti.UI.createLabel({
+			text: "Brutality 2",
+			font:{fontFamily:"Futura-CondensedExtraBold ", fontSize: 24},
+			top: 10,
+			width:"90%"
+		});
+		var label5 = Ti.UI.createLabel({
+			text: "Brutality 3",
+			font:{fontFamily:"Futura-CondensedExtraBold ", fontSize: 24},
+			top: 10,
+			width:"90%"
 		});
 		var fatality1 = Ti.UI.createLabel({
 			text: dataSource.fat1,
@@ -214,38 +262,47 @@ var getFinish = function(dataSource){
 		};
 	};
 var startBtn = Ti.UI.createView({
-	height: 20,
-	width:40,
-	top: 0,
-	backgroundColor: "green"
+	height: 30,
+	width:50,
+	top: 20,
+	backgroundColor: "2da73e"
 });
 var resetBtn = Ti.UI.createView({
-	height: 20,
-	width:40,
+	height: 30,
+	width:50,
 	top: 0,
-	backgroundColor: "red"
+	backgroundColor: "d12b04"
+});
+var startLabel = Ti.UI.createLabel({
+	text: "Start"
+});
+var resetLabel = Ti.UI.createLabel({
+	text: "Reset"
 });
 var displayLabel = Ti.UI.createLabel({
-	text: ""
+	text: "",
+	font: {fontFamily:"Farah", fontSize: 36}
 });
 var myTimer = new countDown( 0,8,
 		function() {
-			display_lbl.text = my_timer.time.m+" : "+my_timer.time.s;
+			displayLabel.text = myTimer.time.m+" : "+myTimer.time.s;
 		},
 		function() {
 		
 		}
 	);
 resetBtn.addEventListener('click',function(){
-	my_timer.set(0,8);
+	myTimer.set(0,8);
 });
  
 startBtn.addEventListener('click',function(){
-	my_timer.start();
+	myTimer.start();
 });
+startBtn.add(startLabel);
+resetBtn.add(resetLabel);
 moves.add(displayLabel, startBtn, resetBtn);
 		
-		moves.add(fatality1, fatality2, brutality1, brutality2, brutality3);
+		moves.add(label1,fatality1,label2, fatality2, label3, brutality1, label4, brutality2, label5, brutality3);
 		finishHim.add(moves);
 		navWin.openWindow(finishHim);
 	};
@@ -274,7 +331,8 @@ searchText.addEventListener("return", function(e){
 		
 	}
 });
+
 search.add(searchText);
 finWin.add(finView, search);
 login.add(loginLabel);
-mainWin.add(login, user, pass);
+mainWin.add(login, user, pass, titleLabel, userLabel, passLabel);
