@@ -34,6 +34,5 @@ var viewContainer = Ti.UI.createScrollView({
 	height: pH - border.height - border.top
 });
 mainWin.add(viewContainer);
-
 var loadFile = require("JSON");
 navWin.open();

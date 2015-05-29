@@ -52,11 +52,15 @@ for(var i=0; i<info.length; i++){
 //Event Listener
 	viewContainer.addEventListener("click", function(e){
 	getDetail(e.source);
-	
+	if (e.source.title ===  null){
+	navWin.openWindow(mainWin);
+	console.log("ok");
+}
 });
 // Info Functions
 var getDetail =function(dataSource){ 
 	//New window for info
+if (dataSource !== viewContainer){
 	photoView = Ti.UI.createWindow({
 		backgroundColor: "c2c2c2",
 		title: dataSource.title,
@@ -177,5 +181,8 @@ var infoView = Ti.UI.createView({
 	infoView.add(tag1,tagRel, tag2, tagRate, tag3, tagPub, tag4, tagDev, tag5,tagRev, tag6, tagPlat,tag7, tagDesc);
 	photoView.add(photo, infoView);
 	navWin.openWindow(photoView);
-	
+	console.log(dataSource);
+
 };
+};
+
