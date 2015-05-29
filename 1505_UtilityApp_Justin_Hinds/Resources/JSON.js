@@ -165,7 +165,7 @@ var getFinish = function(dataSource){
 		// view for move list
 		var moves = Ti.UI.createView({
 			layout:"vertical",
-			backgroundColor: "white",
+			backgroundColor: "e7f5fd",
 			
 		});
 		var label1 = Ti.UI.createLabel({
