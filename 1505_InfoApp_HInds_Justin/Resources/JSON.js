@@ -54,7 +54,6 @@ for(var i=0; i<info.length; i++){
 	getDetail(e.source);
 	if (e.source.title ===  null){
 	navWin.openWindow(mainWin);
-	console.log("ok");
 }
 });
 // Info Functions
